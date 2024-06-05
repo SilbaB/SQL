@@ -90,10 +90,14 @@ FROM orders;
 
 SELECT *
 FROM orders
-JOIN customers
+SELECT *
+FROM orders 
+RIGHT JOIN customers
+On orders.customer_id = customers.customer_id;JOIN customers
 on orders.customer_id=customers.customer_id;
 
 SELECT *
 FROM orders
 LEFT JOIN customers
-ON orders.customer_id = customers.customer_id
+ON orders.customer_id = customers.customer_id;
+
