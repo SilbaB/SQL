@@ -62,14 +62,21 @@ FROM
   
   SELECT MAX(invoice_total) AS invoice_max, MIN(invoice_total) AS invoice_min
   FROM jumiaa_invoicing.invoices;
+  
   SELECT COUNT(payment_date) AS total_amount_payment_date
   FROM jumiaa_invoicing.invoices;
+  
+SELECT INVOICE_TOTAL
+FROM jumiaa_invoicing.invoices;
   
   SELECT ROUND(invoice_total,1) AS invoice_total_1dp
   FROM jumiaa_invoicing.invoices; #it rounds into 1 dp.the round fxn takes two parameters
    
    select *
    FROM jumiaa_invoicing.invoices;
+   USE jumiaa_invoicing;
+SELECT * FROM invoices
+WHERE invoice_id NOT BETWEEN 2 AND 10;
    
     SELECT clIent_id, MAX(invoice_total)
     FROM jumiaa_invoicing.invoices
@@ -78,7 +85,12 @@ FROM
 SELECT client_id, AVG(invoice_total) AS invoice_avg
 FROM jumiaa_invoicing.invoices
 GROUP BY CLIENT_ID
-HAVING AVG(INVOICE_TOTAL);
+HAVING AVG(INVOICE_TOTAL) >150;
+#The HAVING clause is used to filter groups of data based on a condition. 
+-- In this query, it is intended to filter groups where the average of invoice_total meets 
+-- a certain condition. However, the condition is missing. The HAVING clause usually requires
+--  a condition, like HAVING AVG(invoice_total) > 100, to specify that only groups with 
+--  an average invoice_total greater than 100 should be included in the result
     
 SELECT *
 FROM customers;
@@ -89,11 +101,14 @@ FROM orders;
 #Joininng methods
 
 SELECT *
-FROM orders
+FROM orders 
+Join customers
+ON orders.customer_id = customers.customer_id;
+
 SELECT *
 FROM orders 
 RIGHT JOIN customers
-On orders.customer_id = customers.customer_id;JOIN customers
+-- - On orders.customer_id = customers.customer_id;JOIN customers
 on orders.customer_id=customers.customer_id;
 
 SELECT *
