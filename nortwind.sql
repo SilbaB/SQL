@@ -44,12 +44,25 @@ Values ('ANATY', 'Anita Tyres', 'Basil Kip', 'data analyst', 'Nairobi', 'Kenya')
 SELECT *
 FROM customers;
 
-Insert into customers (city)
-VALUES ('Nakuru');
+Insert into customers (customerID,city)
+VALUES (23,'Nakuru');
 
 SELECT DISTINCT city
 FROM customers;
 
-SELECT contactName,city
+SELECT customerID,contactName,city
 FROM customers
 WHERE contactName IS NULL;
+
+SELECT *
+FROM customers;
+
+#UPDATE
+#updating the null values 
+
+UPDATE customers
+SET companyName = "The weekend", ContactName= "Ian Wright"
+WHERE customerID =23;
+
+SELECT *
+FROM customers;
