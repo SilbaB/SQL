@@ -66,3 +66,16 @@ WHERE customerID =23;
 
 SELECT *
 FROM customers;
+
+SELECT country
+FROM customers;
+
+SELECT COUNT(customerID) , country
+FROM customers
+GROUP BY country
+HAVING COUNT(customerID) >8;
+
+SELECT COUNT(customerID) , country
+FROM customers
+GROUP BY country
+HAVING COUNT(customerID) <5;

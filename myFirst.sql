@@ -115,4 +115,22 @@ SELECT *
 FROM orders
 LEFT JOIN customers
 ON orders.customer_id = customers.customer_id;
+SELECT COUNT(customer_id)
+FROM customers;
+#INSERT INTO
+INSERT INTO customers
+VALUES(11,"mark","mogire",'1986-03-28','408-932-9456',"kimulu","Kisii","Rn",345);
+#UPDATE
+#Updating a table
+UPDATE customers 
+set address = "4th floor", city="Nakuru"
+WHERE customer_id=11;
 
+SELECT *
+FROM customers;
+
+#DELETE  hii ni mbaya sana😂😒
+DELETE FROM customers WHERE first_name="mark" and customer_id=11;
+
+SELECT *
+FROM customers;
