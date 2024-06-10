@@ -134,3 +134,39 @@ DELETE FROM customers WHERE first_name="mark" and customer_id=11;
 
 SELECT *
 FROM customers;
+
+#SUBQUERIES
+
+SELECT first_name,last_name,points
+FROM customers
+WHERE points > (SELECT avg(points) FROM customers);
+ SELECT POINTS
+ FROM customers;
+
+SELECT first_name,last_name,points
+FROM customers
+WHERE points > (SELECT points FROM customers WHERE first_name='Mutula'); 
+
+#stored procedures using delimiters
+ 
+ delimiter &&
+ CREATE procedure top_points()
+ begin
+ select points
+ from customers
+ where points > 3000;
+ end &&
+ delimiter ;
+call top_points();
+
+# sp using in
+
+delimiter //
+create procedure sortByPoint(in var int)
+begin
+select first_name,city,points from customers
+order by points desc limit var; 
+end //
+delimiter ;
+call sortByPoint(4)
+
